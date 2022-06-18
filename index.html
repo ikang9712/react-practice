@@ -8,22 +8,20 @@
     <script src = "https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
         const root = document.getElementById('root')
-        let counter = 0;
-        function countUP() {
-            counter = counter + 1;
-            render()
-        }
-        function render() {
-            ReactDOM.render(<Container/>, root);
-            // React updates the only difference happended in the component!!! 
-            // it allows us to make really interactive interface.
-        }
-        const Container = () => (
+
+        function App() {
+            const [counter,setCounter] = React.useState(0);
+            function onClick(){
+                setCounter(counter+1);
+            }
+            
+            return (
             <div>
                 <h3>Total clicks: {counter}</h3>
-                <button onClick={countUP}>Click me</button>
+                <button onClick={onClick}>Click me</button>
             </div>
-        );
-        render()
+            );
+        }
+        ReactDOM.render(<App/>, root);
     </script>
 </html>
