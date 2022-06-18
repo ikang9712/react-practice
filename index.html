@@ -8,33 +8,22 @@
     <script src = "https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
         const root = document.getElementById('root')
-        function Title() {
-            return(
-            <h3 id="title" 
-            onMouseEnter={
-                () => console.log('mouse enter')}
-            >Hello I'm a h3</h3>);
+        let counter = 0;
+        function countUP() {
+            counter = counter + 1;
+            render()
         }
-        // const Title = () => (<h3 id="title" onMouseEnter={() => console.log('mouse enter')}>Hello I'm a h3</h3>);
-        // const h3 = React.createElement('h3', {onMouseEnter: () => console.log('mouse enter')}, "Hello I'm a h3");
-        const Button = () => (<button 
-            style = {{
-                backgroundColor: "tomato",
-            }}
-            onClick = {()=> console.log('im clicked')}> Click me</button>);
-        // const btn = React.createElement("button", {
-        //     onClick: () => console.log('im clicked'),
-        //     style: {
-        //         backgroundColor: 'tomato'
-        //     }
-        // }, "Click me");
-        // const container = React.createElement("div", null, [Title, Button])
-        const Container = (
+        function render() {
+            ReactDOM.render(<Container/>, root);
+            // React updates the only difference happended in the component!!! 
+            // it allows us to make really interactive interface.
+        }
+        const Container = () => (
             <div>
-                <Title />
-                <Button />
+                <h3>Total clicks: {counter}</h3>
+                <button onClick={countUP}>Click me</button>
             </div>
         );
-        ReactDOM.render(Container, root);
+        render()
     </script>
 </html>
