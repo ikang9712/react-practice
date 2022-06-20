@@ -3,14 +3,10 @@ import styles from "./App.module.css"
 import {useState, useEffect} from "react"
 
 function Hello(){
-  function byeFn(){
-    console.log("bye :(")
-  }
-  function hiFn(){
-    console.log("created :)")
-    return byeFn
-  }
-  useEffect(hiFn, []);
+  useEffect(()=>{
+    console.log("created")
+    return () => console.log("destroyed")
+  },[])
   return <h1> hello </h1>
 }
 
