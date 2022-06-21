@@ -4,7 +4,9 @@ import {useState, useEffect} from "react"
 function App() {
   const [toDo, setToDo] = useState("")
   const [toDos, setToDos] = useState([])
+
   const onChange = (event) => setToDo(event.target.value)
+
   const onSubmit = (event) => {
     event.preventDefault()
     if (toDo === ""){
@@ -14,6 +16,7 @@ function App() {
     // state should be always new. make new array! 
     setToDos((currentArray) => [toDo, ...currentArray])
   }
+
   console.log(toDos)
   return (
     <div>
@@ -26,6 +29,11 @@ function App() {
         placeholder="Write your to do" />
         <button>Add To Do</button>
       </form>
+      <hr />
+      {toDos.map((item,index)=> (
+      <li key={index}>
+        {item}
+      </li>))}
     </div>
   );
 }
